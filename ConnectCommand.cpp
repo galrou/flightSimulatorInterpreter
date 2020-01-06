@@ -13,7 +13,10 @@
 #include "ConnectCommand.h"
 #include "SymbolTable.h"
 #include "ExpressionClass.h"
-
+/**
+*executes connectCommand and activates 2threads one is waiting for first input and the second one
+*sends commands ro the simulator
+**/
 int ConnectCommand::execute(vector<string> s, int i) {
 
 
@@ -41,13 +44,22 @@ int ConnectCommand::execute(vector<string> s, int i) {
     return i + 4;
 
 }
+/**
+* sets the socket
+**/
 void ConnectCommand::setSock(int sockk) {
     sock = sockk;
 }
+/**
+* returns the socket
+**/
 int ConnectCommand::getSock() {
     return sock;
 }
-//once the simulator connects this thread dies
+
+/**
+* once the simulator connects this thread dies-it waits for connection
+**/
 void ConnectCommand::waitForConnection(int port, ConnectCommand *cm){
     //create socket
     int client_socket = socket(AF_INET, SOCK_STREAM, 0);
