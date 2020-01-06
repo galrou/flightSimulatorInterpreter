@@ -16,7 +16,7 @@
 /**
 *executes connectCommand and activates 2threads one is waiting for first input and the second one
 *sends commands ro the simulator
-**/
+*/
 int ConnectCommand::execute(vector<string> s, int i) {
 
 
@@ -52,14 +52,14 @@ void ConnectCommand::setSock(int sockk) {
 }
 /**
 * returns the socket
-**/
+*/
 int ConnectCommand::getSock() {
     return sock;
 }
 
 /**
 * once the simulator connects this thread dies-it waits for connection
-**/
+*/
 void ConnectCommand::waitForConnection(int port, ConnectCommand *cm){
     //create socket
     int client_socket = socket(AF_INET, SOCK_STREAM, 0);
@@ -89,7 +89,7 @@ void ConnectCommand::waitForConnection(int port, ConnectCommand *cm){
 /*
  * this function connects as client in thread once the value of a varible that has the diretion -> changes we will want to chnage
  * the value in the simulator as well
- * */
+ */
 void ConnectCommand::connectAsClient(int port,ConnectCommand*cm) {
     int client_socket=cm->getSock();
     bool isDone=SymbolTable::instance()->getIsDone();
